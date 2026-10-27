@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "963359175539",
+    "project_id": "register-ea42f",
+    "storage_bucket": "register-ea42f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963359175539:android:23da0b29279212012d8b06",
+        "android_client_info": {
+          "package_name": "com.example.register_login"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqMzUfp2C02UrkuSJul9KySDH4BdC6ILU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
