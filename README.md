@@ -1,212 +1,122 @@
-# UNICAR – Kampüs Araç Paylaşım Uygulaması
+# UNICAR - Kampüs Araç Paylaşım Uygulaması
 
-Aksaray Üniversitesi öğrencilerinin kampüs içi ve çevresindeki yolculukları
-paylaşabilmesi için geliştirilen Flutter uygulaması. Bu sürümde uygulamanın
-**kayıt, giriş ve hesap güvenliği** bölümü tamamlanmıştır.
+![Flutter](https://img.shields.io/badge/Flutter-3.47-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-3.13-0175C2?style=for-the-badge&logo=dart&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-Auth%20%7C%20Firestore-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
+![Platform](https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
 
-> **Mobil Programlama dersi proje ödevi**
-> Süveyda Şeyma Mercan – 240211001
-> Aksaray Üniversitesi, Yazılım Mühendisliği 3. sınıf
+UNICAR, Aksaray Üniversitesi öğrencilerinin kampüs içinde yolculuk paylaşabilmesi için geliştirilmiş bir Flutter uygulamasıdır. Bu sürümde kayıt, giriş ve hesap güvenliği bölümü tamamlanmıştır.
 
----
+Mobil Programlama dersi proje ödevi\
+Süveyda Şeyma Mercan - 240211001\
+Aksaray Üniversitesi, Yazılım Mühendisliği 3. sınıf
 
-## Hızlı deneme
+<p align="center">
+  <img src="docs/unicar_demo.gif" width="270" alt="UNICAR kayıt akışı">
+</p>
 
-### 1) Hazır APK ile (en kolay yol)
-[**Releases**](../../releases/latest) sayfasından `UNICAR.apk` dosyasını bir
-Android telefona indirip kurabilirsiniz. Kurulum sırasında "bilinmeyen
-kaynaklardan yüklemeye izin ver" onayı istenebilir.
+<p align="center">
+  <img src="docs/screenshots/01_giris.png" width="180" alt="Giriş">
+  <img src="docs/screenshots/02_kayit_hesap.png" width="180" alt="Kayıt - Hesap">
+  <img src="docs/screenshots/03_kayit_profil.png" width="180" alt="Kayıt - Profil">
+  <img src="docs/screenshots/07_ana_sayfa.png" width="180" alt="Ana sayfa">
+</p>
 
-### 2) Demo e-posta adresleri
-Kayıt yalnızca **`@asu.edu.tr`** uzantılı ve **okul listesinde kayıtlı**
-e-postalarla yapılabilir. Deneme için listeye şu adresler eklenmiştir:
+## Deneme
 
-| Kayıt için kullanılabilecek e-posta |
-|---|
-| `unicar.test1@asu.edu.tr` |
-| `unicar.test2@asu.edu.tr` |
-| `unicar.test3@asu.edu.tr` |
+Uygulama [Releases](https://github.com/MERCANX25/unicar/releases) bölümündeki UNICAR.apk dosyasıyla Android cihazlara kurulabilir. Kurulum sırasında "bilinmeyen kaynaklardan yükleme" izni istenebilir.
 
-Her adres **bir kez** kayıt olabilir. Kayıttan sonra aynı adres ve
-belirlediğiniz şifreyle giriş yapabilirsiniz. Listede olmayan bir
-`@asu.edu.tr` adresi denendiğinde "Bu e-posta okul kayıtlarında bulunamadı"
-uyarısı görünür.
+Kayıt yalnızca @asu.edu.tr uzantılı ve okul listesinde yer alan e-posta adresleriyle yapılabilir. Deneme için listeye aşağıdaki adresler eklenmiştir:
 
-> Not: Bu adreslerin gerçek bir posta kutusu yoktur. Bu nedenle e-posta
-> doğrulaması teslim sürümünde kapalıdır (bkz. [Bilinen sınırlar](#bilinen-sınırlar)).
+- unicar.test1@asu.edu.tr
+- unicar.test2@asu.edu.tr
+- unicar.test3@asu.edu.tr
 
----
+Her adres bir kez kayıt olabilir. Kayıt sonrası aynı adres ve belirlenen şifreyle giriş yapılabilir. Listede bulunmayan bir adres girildiğinde "Bu e-posta okul kayıtlarında bulunamadı" uyarısı gösterilir.
+
+Bu adreslerin gerçek bir posta kutusu bulunmadığı için e-posta doğrulaması bu sürümde kapalıdır.
 
 ## Ekran görüntüleri
 
-| Giriş | Kayıt – Hesap | Kayıt – Profil | Kayıt – Onay |
-|---|---|---|---|
-| ![Giriş](docs/screenshots/01_giris.png) | ![Hesap](docs/screenshots/02_kayit_hesap.png) | ![Profil](docs/screenshots/03_kayit_profil.png) | ![Onay](docs/screenshots/04_kayit_onay.png) |
-
-| Kayıt başarılı | Konum izni | Ana sayfa | Şifremi unuttum |
-|---|---|---|---|
-| ![Başarılı](docs/screenshots/05_kayit_basarili.png) | ![İzin](docs/screenshots/06_konum_izni.png) | ![Ana sayfa](docs/screenshots/07_ana_sayfa.png) | ![Şifremi unuttum](docs/screenshots/08_sifremi_unuttum.png) |
-
-Yatay ekran:
-
-![Yatay giriş](docs/screenshots/09_yatay_giris.png)
-![Yatay kayıt](docs/screenshots/10_yatay_kayit.png)
-
----
+Ekran görüntüleri `docs/screenshots` klasöründedir: giriş, kayıt (hesap, profil, onay adımları), kayıt başarılı ekranı, konum izni, ana sayfa, şifremi unuttum ekranı, hata mesajı ve yatay ekran görünümleri.
 
 ## Özellikler
 
-**Kayıt (3 adım)**
-- **Hesap:** `@asu.edu.tr` e-postası (okul listesi kontrolü), şifre gücü
-  çubuğu (zayıf / orta / güçlü), şifre tekrarı
-- **Profil:** Ad Soyad (Türkçe karakter destekli), telefon (`+90 5XX XXX XX XX`
-  biçiminde otomatik), rol seçimi (Yolcu / Sürücü / İkisi de)
-- **Onay:** Bilgi özeti, KVKK aydınlatma metni ve onayı
+Kayıt üç adımdan oluşur:
+- Hesap: okul e-postası, şifre (güç göstergeli) ve şifre tekrarı
+- Profil: ad soyad, telefon (+90 biçiminde otomatik düzenlenir) ve rol seçimi (Yolcu, Sürücü, İkisi de)
+- Onay: girilen bilgilerin özeti, KVKK metni ve onayı
 
-**Giriş**
-- "Beni hatırla": işaretlenmezse uygulama her açılışta oturumu kapatır
-- "Şifremi unuttum": e-postaya şifre sıfırlama bağlantısı gönderilir
+Giriş ekranında "Beni hatırla" seçeneği bulunur. İşaretlenmediğinde uygulama her açılışta oturumu kapatır. "Şifremi unuttum" ile e-posta üzerinden şifre sıfırlama yapılabilir.
 
-**Diğer**
-- Kayıt sonrası konum ve bildirim izin ekranları
-- E-posta doğrulama ekranı (yeniden gönder / kontrol et)
-- Türkçe hata mesajları (internet yok, e-posta kayıtlı vb.)
-- Çift tıklamaya karşı korumalı butonlar
-- Koyu tema, Poppins yazı tipi
-- Dikey ve yatay ekran desteği
-- Animasyonlar (yalnızca Flutter'ın kendi widget'larıyla): `Hero`,
-  `AnimatedContainer`, `AnimatedSwitcher`, `ScaleTransition`,
-  `FadeTransition`, `TweenAnimationBuilder`
+Kayıttan sonra konum ve bildirim izinleri için açıklama ekranları gösterilir. Hata mesajları Türkçedir, butonlar çift tıklamaya karşı korunmuştur. Uygulama koyu temada, Poppins yazı tipiyle ve yatay ekranda da çalışacak şekilde tasarlanmıştır.
 
----
+Animasyonlar yalnızca Flutter'ın kendi widget'larıyla oluşturulmuştur: Hero, AnimatedContainer, AnimatedSwitcher, ScaleTransition, FadeTransition ve TweenAnimationBuilder.
 
-## Kullanılan teknolojiler
+## Kullanılan paketler
 
-| Teknoloji | Kullanım amacı |
-|---|---|
-| Flutter 3.47 / Dart 3.13 | Uygulama |
-| Firebase Authentication | Kayıt, giriş, şifre sıfırlama, e-posta doğrulama |
-| Cloud Firestore | Kullanıcı profilleri ve okul e-posta listesi |
-| `google_fonts` | Poppins yazı tipi |
-| `hexcolor` | Renk paleti |
-| `flutter_svg` | Kayıt ekranı arka planı |
-| `permission_handler` | Konum ve bildirim izinleri |
-| `shared_preferences` | "Beni hatırla" tercihi |
-| `flutter_localizations` | Türkçe dil desteği |
+- firebase_auth, cloud_firestore: kimlik doğrulama ve veri
+- google_fonts: Poppins yazı tipi
+- hexcolor: renk paleti
+- flutter_svg: kayıt ekranı arka planı
+- permission_handler: konum ve bildirim izinleri
+- shared_preferences: "Beni hatırla" tercihi
 
----
+## Proje yapısı
 
-## Klasör yapısı
+- `lib/main.dart`: uygulamanın başlangıç noktası
+- `lib/models/user.dart`: kullanıcı modeli
+- `lib/services/`: Firebase işlemleri (`auth_service.dart`) ve "beni hatırla" tercihi
+- `lib/screens/`: giriş, kayıt, izin, doğrulama ve ana sayfa ekranları
+- `lib/widgets/`: yeniden kullanılan arayüz parçaları
+- `lib/utils/`: doğrulama kuralları, renk paleti ve gömülü görseller
 
-```
-lib/
-├── main.dart                      Uygulama girişi, tema, açılış yönlendirmesi
-├── firebase_options.dart          Firebase bağlantı ayarları
-├── models/
-│   └── user.dart                  Kullanıcı modeli ve roller
-├── services/
-│   ├── auth_service.dart          Firebase işlemleri ve Türkçe hata mesajları
-│   └── remember_me_service.dart   "Beni hatırla" tercihi
-├── screens/
-│   ├── login_screen.dart          Giriş
-│   ├── register_screen.dart       3 adımlı kayıt
-│   ├── register_success_screen.dart
-│   ├── permission_screen.dart     Konum / bildirim izni
-│   ├── verify_email_screen.dart   E-posta doğrulama
-│   └── home_screen.dart           Ana sayfa
-├── widgets/                       Tekrar kullanılan arayüz parçaları
-└── utils/
-    ├── validators.dart            Form doğrulama kuralları
-    ├── app_colors.dart            Renk paleti
-    ├── app_config.dart            Özellik bayrakları
-    ├── embedded_images.dart       Koda gömülü görseller
-    └── phone_input_formatter.dart Telefon biçimlendirme
-```
+Ekranlar Firebase'e doğrudan bağlanmaz; tüm Firebase işlemleri `auth_service.dart` üzerinden yapılır.
 
-Mimari üç katmandan oluşur: **ekranlar** yalnızca **`AuthService`**'i çağırır,
-Firebase ile yalnızca servis konuşur. Böylece Firebase'e ait kod ve hata
-çevirileri tek bir yerde toplanır.
+## Görsellerin koda gömülmesi
 
----
+Proje yalnızca `lib` klasörüyle teslim edilmektedir. Logo ve arka plan normalde `assets` klasöründe bulunur ve `lib` tek başına açıldığında görünmez. Bu nedenle arka plan SVG'si ve logo `lib/utils/embedded_images.dart` dosyasına gömülmüştür. Logo, ekranda gösterildiği boyuta göre 384x384 piksele küçültülmüştür.
 
-## Görseller neden kodun içinde?
+## Firebase
 
-Proje teslimi yalnızca **`lib` klasörünü** kapsamaktadır. Logo ve kayıt ekranı
-arka planı normalde `assets/` klasöründe durur ve `lib` dışında kalır; bu
-durumda `lib` tek başına açıldığında görseller bulunamazdı.
+- Authentication: e-posta, şifre ve doğrulama durumu. Şifreler Firebase tarafından saklanır, veritabanında tutulmaz.
+- Firestore `users` koleksiyonu: ad soyad, e-posta, telefon, rol, KVKK onayı ve kayıt tarihi
+- Firestore `izinli_mailler` koleksiyonu: okul öğrenci listesi
 
-Bu nedenle iki görsel doğrudan Dart koduna gömülmüştür
-([`lib/utils/embedded_images.dart`](lib/utils/embedded_images.dart)):
+Güvenlik kurallarına göre her kullanıcı yalnızca kendi profiline erişebilir. Okul listesi tek tek sorgulanabilir, ancak tamamı okunamaz ve uygulama üzerinden değiştirilemez.
 
-- **Arka plan (SVG):** SVG bir metin dosyası olduğu için olduğu gibi
-  yazılmış, `SvgPicture.string(...)` ile çizilir.
-- **Logo (PNG):** İkili bir dosya olduğu için Base64 metnine çevrilmiş,
-  `Image.memory(base64Decode(...))` ile gösterilir. Ekranda en fazla 96 dp
-  gösterildiği için 384×384 piksele küçültülmüştür (306 KB → 51 KB).
+Depodaki `google-services.json` ve `firebase_options.dart` dosyalarındaki API anahtarı bir gizli şifre değildir; Firebase projesini tanımlayan bir kimliktir. Veri güvenliği kurallarla sağlanır.
 
-`assets/` klasörü kaynak dosyalar ve uygulama ikonunun üretilmesi
-(`flutter_launcher_icons`) için korunmuştur.
-
----
-
-## Firebase yapısı
-
-| Yer | İçerik |
-|---|---|
-| Authentication | E-posta, şifre (Firebase tarafından güvenli şekilde saklanır), doğrulama durumu |
-| Firestore `users/{uid}` | adSoyad, email, telefon, rol, kvkkOnay, olusturmaTarihi |
-| Firestore `izinli_mailler/{email}` | Okulun öğrenci e-posta listesi (örnek) |
-
-Güvenlik kuralları:
-
-```
-match /users/{userId} {
-  allow read, write: if request.auth != null && request.auth.uid == userId;
-}
-match /izinli_mailler/{email} {
-  allow get: if true;
-  allow list, write: if false;
-}
-```
-
-- Her kullanıcı yalnızca kendi profilini okuyup yazabilir.
-- Okul listesi tek tek sorgulanabilir ama tamamı indirilemez ve uygulamadan
-  değiştirilemez.
-
-> Depodaki `google-services.json` ve `firebase_options.dart` dosyalarında yer
-> alan Firebase API anahtarı gizli bir parola değil, uygulamanın Firebase
-> projesini tanımlayan bir kimliktir. Verilere erişim yukarıdaki güvenlik
-> kurallarıyla sınırlandırılmıştır.
-
----
-
-## Projeyi çalıştırma
+## Çalıştırma
 
 ```bash
-git clone <bu deponun adresi>
+git clone https://github.com/MERCANX25/unicar.git
 cd unicar
 flutter pub get
 flutter run
 ```
 
-Gereksinimler: Flutter 3.47+, Android SDK (compileSdk 37), Android emülatör
-veya telefon. Firebase yapılandırması depoda hazırdır; ek bir kurulum
-gerekmez. Firebase yalnızca **Android** için yapılandırılmıştır.
+Gereksinimler: Flutter 3.47 ve bir Android cihaz ya da emülatör. Firebase yapılandırması depoda hazırdır. Şu an yalnızca Android için yapılandırılmıştır.
 
-Testler: `flutter test`
-
----
+Testler için: `flutter test`
 
 ## Bilinen sınırlar
 
-- **E-posta doğrulaması kapalı:** Doğrulama ekranı ve kodu hazırdır; ancak
-  demo adreslerin gerçek posta kutusu olmadığı için teslim sürümünde
-  [`lib/utils/app_config.dart`](lib/utils/app_config.dart) içindeki
-  `requireEmailVerification` bayrağı `false` yapılmıştır. `true` yapıldığında
-  doğrulanmamış kullanıcılar Ana Sayfa yerine doğrulama ekranını görür.
-- **Okul listesi kontrolü uygulama içinde yapılır:** Gerçek bir üründe bu
-  kontrolün sunucu tarafında (ör. Firebase Blocking Functions) yapılması
-  gerekir.
-- **Yalnızca Android:** iOS ve web için Firebase yapılandırması yapılmamıştır.
-- **Sonraki adımlar:** Yolculuk oluşturma, yolculuk arama ve sürücü–yolcu
-  eşleştirme ekranları.
+- E-posta doğrulaması kapalıdır. Ekran hazırdır, ancak `lib/utils/app_config.dart` içindeki `requireEmailVerification` bayrağı `false` olarak ayarlanmıştır.
+- Okul listesi kontrolü uygulama içinde yapılmaktadır. Gerçek bir üründe bu kontrolün sunucu tarafında yapılması gerekir.
+- iOS ve web için Firebase yapılandırması yoktur.
+- Sonraki adımlar: yolculuk oluşturma, yolculuk arama ve sürücü-yolcu eşleştirme.
+
+---
+
+## English summary
+
+UNICAR is a campus ride-sharing app for Aksaray University students, built with Flutter and Firebase as a Mobile Programming course project. This version covers the registration, login and account security flow:
+
+- 3-step registration restricted to university e-mail addresses (`@asu.edu.tr`) that are on the school's allow-list (Firestore)
+- Password strength indicator, Turkish form validation and Turkish error messages
+- "Remember me", password reset by e-mail and an e-mail verification screen (disabled in this build, see *Bilinen sınırlar*)
+- Location and notification permission screens
+- Dark theme, portrait and landscape layouts, animations built only with Flutter's own widgets
+
+An installable APK is available on the [Releases](https://github.com/MERCANX25/unicar/releases) page. To run from source: `flutter pub get` and `flutter run` (Android only).
